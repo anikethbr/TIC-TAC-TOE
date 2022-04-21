@@ -1,120 +1,120 @@
-let turn="X";
-var arr=[];
-for(var i=1;i<=9;i++){
-    arr[i]=(document.getElementById(i.toString()))
+let turn = "X";
+var arr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+for (var i = 0; i < 3; i++) {
+    for (var j = 0; j < 3; j++) {
+        arr[i][j] = (document.getElementById(i.toString().concat(j.toString())));
+    }
 }
-var heading=document.getElementsByClassName("heading")[0];
-function declareWinner(){
+var heading = document.getElementsByClassName("heading")[0];
+function declareWinner() {
     //Horizontal
-    var x=0,o=0;
-    for(var i=1;i<=9;i+=3){
-        for( var j=i;j<=i+2;j++){
-            if(arr[j].innerHTML=="X"){
+    var x = 0, o = 0;
+    for (var i = 0; i < 3; i++) {
+        for (var j = 0; j < 3; j++) {
+            if (arr[i][j].innerHTML == "X") {
                 x++;
-                console.log(x);
-            }else if(arr[j].innerHTML=="O"){
+            } else if (arr[i][j].innerHTML == "O") {
                 o++;
-                console.log(o);
             }
         }
-        if(x==3){
-            heading.innerHTML="X WINS";
+        if (x == 3) {
+            heading.innerHTML = "X WINS";
+            heading.style.color = "red";
             disableAllBtn();
             break;
-        }else if(o==3){
-            heading.innerHTML="O WINS";
+        } else if (o == 3) {
+            heading.innerHTML = "O WINS";
+            heading.style.color = "blue";
             disableAllBtn();
             break;
-        }else{
-            x=0;
-            o=0;
+        } else {
+            x = 0;
+            o = 0;
         }
     }
     //vertical
-    var x=0,o=0;
-    for(var i=1;i<=3;i++){
-        for( var j=i;j<=9;j+=3){
-            if(arr[j].innerHTML=="X"){
+    var x = 0, o = 0;
+    for (var i = 0; i < 3; i++) {
+        for (var j = 0; j < 3; j++) {
+            if (arr[j][i].innerHTML == "X") {
                 x++;
-                console.log(x);
-            }else if(arr[j].innerHTML=="O"){
+            } else if (arr[j][i].innerHTML == "O") {
                 o++;
-                console.log(o);
             }
         }
-        if(x==3){
-            heading.innerHTML="X WINS";
+        if (x == 3) {
+            heading.innerHTML = "X WINS";
             disableAllBtn();
             break;
-        }else if(o==3){
-            heading.innerHTML="O WINS";
+        } else if (o == 3) {
+            heading.innerHTML = "O WINS";
             disableAllBtn();
             break;
-        }else{
-            x=0;
-            o=0;
+        } else {
+            x = 0;
+            o = 0;
         }
     }
     //Diagonal 1
-    var x=0,o=0;
-    for(var i=1;i<=9;i+=4){
-            if(arr[i].innerHTML=="X"){
-                x++;
-                console.log(x);
-            }else if(arr[i].innerHTML=="O"){
-                o++;
-                console.log(o);
-            }
+    var x = 0, o = 0;
+    for (var i = 0; i < 3; i++) {
+        if (arr[i][i].innerHTML == "X") {
+            x++;
+        } else if (arr[i][i].innerHTML == "O") {
+            o++;
         }
-    if(x==3){
-        heading.innerHTML="X WINS";
+    }
+    if (x == 3) {
+        heading.innerHTML = "X WINS";
         disableAllBtn();
-    }else if(o==3){
-        heading.innerHTML="O WINS";
+    } else if (o == 3) {
+        heading.innerHTML = "O WINS";
         disableAllBtn();
-    }else{
-            x=0;
-            o=0;
+    } else {
+        x = 0;
+        o = 0;
     }
     //Diagonal 2
-    var x=0,o=0;
-    for(var i=3;i<=9;i+=2){
-            if(arr[i].innerHTML=="X"){
-                x++;
-                console.log(x);
-            }else if(arr[i].innerHTML=="O"){
-                o++;
-                console.log(o);
+    var x = 0, o = 0;
+    for (var i = 0; i < 3; i++) {
+        for (var j = 2; j >= 0; j--) {
+            if (i + j == 2) {
+                if (arr[i][j].innerHTML == "X") {
+                    x++;
+                } else if (arr[i][j].innerHTML == "O") {
+                    o++;
+                }
             }
         }
-    if(x==3){
-        heading.innerHTML="X WINS";
-        disableAllBtn();
-    }else if(o==3){
-        heading.innerHTML="O WINS";
-        disableAllBtn();
-    }else{
-            x=0;
-            o=0;
+        if (x == 3) {
+            heading.innerHTML = "X WINS";
+            disableAllBtn();
+        } else if (o == 3) {
+            heading.innerHTML = "O WINS";
+            disableAllBtn();
+        } else {
+            x = 0;
+            o = 0;
+        }
     }
 }
-function play(btnId){
-    var button =document.getElementById(btnId);
-    if (turn=="X"){
-        button.innerHTML="X";
-        button.style.color="red";
-        button.disabled=true;
-        turn="O";
-    }else if (turn=="O"){
-        button.innerHTML="O";
-        button.style.color="blue";
-        button.disabled=true;
-        turn="X";
+function play(btnId) {
+    var button = document.getElementById(btnId);
+    if (turn == "X") {
+        button.innerHTML = "X";
+        button.style.color = "red";
+        button.disabled = true;
+        turn = "O";
+    } else if (turn == "O") {
+        button.innerHTML = "O";
+        button.style.color = "blue";
+        button.disabled = true;
+        turn = "X";
     }
     declareWinner();
 }
-function disableAllBtn(){
-    for(var i=0;i<9;i++){
-        document.getElementsByTagName("button")[i].disabled=true;
+function disableAllBtn() {
+    for (var i = 0; i < 9; i++) {
+        document.getElementsByTagName("button")[i].disabled = true;
     }
 }
