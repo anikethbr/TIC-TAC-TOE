@@ -44,10 +44,12 @@ function declareWinner() {
         }
         if (x == 3) {
             heading.innerHTML = "X WINS";
+            heading.style.color = "red";
             disableAllBtn();
             break;
         } else if (o == 3) {
             heading.innerHTML = "O WINS";
+            heading.style.color = "blue";
             disableAllBtn();
             break;
         } else {
@@ -66,9 +68,11 @@ function declareWinner() {
     }
     if (x == 3) {
         heading.innerHTML = "X WINS";
+        heading.style.color = "red";
         disableAllBtn();
     } else if (o == 3) {
         heading.innerHTML = "O WINS";
+        heading.style.color = "blue";
         disableAllBtn();
     } else {
         x = 0;
@@ -88,9 +92,11 @@ function declareWinner() {
         }
         if (x == 3) {
             heading.innerHTML = "X WINS";
+            heading.style.color = "red";
             disableAllBtn();
         } else if (o == 3) {
             heading.innerHTML = "O WINS";
+            heading.style.color = "blue";
             disableAllBtn();
         } else {
             x = 0;
