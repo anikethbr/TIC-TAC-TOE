@@ -81,7 +81,7 @@ function declareWinner() {
     //Diagonal 2
     var x = 0, o = 0;
     for (var i = 0; i < 3; i++) {
-        for (var j = 2; j >= 0; j--) {
+        for (var j = 0; j < 3; j++) {
             if (i + j == 2) {
                 if (arr[i][j].innerHTML == "X") {
                     x++;
@@ -90,6 +90,7 @@ function declareWinner() {
                 }
             }
         }
+    }
         if (x == 3) {
             heading.innerHTML = "X WINS";
             heading.style.color = "red";
@@ -102,7 +103,7 @@ function declareWinner() {
             x = 0;
             o = 0;
         }
-    }
+   
 }
 function play(btnId) {
     var button = document.getElementById(btnId);
